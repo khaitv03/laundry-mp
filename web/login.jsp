@@ -12,11 +12,25 @@
         <title>Login Page</title>
         <link rel="stylesheet" href="css/login.css"/>
     </head>
+    <style>
+        /* Thiết lập một phương thức zoom mặc định cho màn hình lớn */
+        .container {
+            transform: scale(1); /* Kích thước ban đầu */
+            transition: transform 0.3s; /* Thời gian chuyển đổi mượt */
+        }
+
+        /* Sử dụng Media Query để điều chỉnh zoom cho các kích thước màn hình khác nhau */
+        @media screen and (max-width: 768px) {
+            .container {
+                transform: scale(0.8); /* Zoom 80% cho màn hình nhỏ hơn hoặc bằng 768px */
+            }
+        }
+    </style>
     <body>
         <div class="login-page">
             <div class="container">
                 <div class="thumnail">
-                    <img src="image/thumnail.png"  alt="thumnail"></img>
+                    <img src="image/thumnail.png" weight="100%" height="100%" alt="thumnail"></img>
                 </div>
                 <div class="form">
                     <div class="form-login">

@@ -21,13 +21,15 @@
                 <div class="form">
                     <div class="form-register">
                         <h1>WELCOME</h1>
+                        <br>
                         <h2>Sign up to</h2>
+                        <br>
                         <h5>Laudry middle platform</h5>
 
                         <form class="form-register-content" action="MainController" method="POST">
                             <label for="username" >User name</label><br>
                             <input class="text" type="text" name="username" value="" required><br>
-                            <br>
+
                             <td>
                             <c:if test="${not empty requestScope.INSERTERROR}">
                                 <c:if test="${not empty requestScope.INSERTERROR.usernameDuplicateErr}">
@@ -39,7 +41,7 @@
                             </td>
                             <label for="password">Password</label><br>
                             <input class="text" type="password" name="password" value="" required><br>
-                            <br>
+
                             <c:if test="${not empty requestScope.INSERTERROR}">
                                 <c:if test="${not empty requestScope.INSERTERROR.passwordLengthErr}">
                                     <font color="red">
@@ -49,7 +51,7 @@
                             </c:if>
                             <label for="confirm">Confirm password</label><br>
                             <input class="text" type="password" name="cfpassword" value="" required><br>
-                            <br>
+
                             <c:if test="${not empty requestScope.INSERTERROR}">
                                 <c:if test="${not empty requestScope.INSERTERROR.confirmNotMatch}">
                                     <font color="red">
@@ -59,7 +61,7 @@
                             </c:if>
                             <label for="fullname">Fullname</label><br>
                             <input class="text" type="text" name="fname" value="" required><br>
-                            <br>
+
                             <c:if test="${not empty requestScope.INSERTERROR}">
                                 <c:if test="${not empty requestScope.INSERTERROR.fullNameLengthErr}">
                                     <font color="red">
@@ -69,21 +71,26 @@
                             </c:if>
                             <label for="phone">Phone number</label><br>
                             <input class="text" type="text" name="phone" value="" required><br>
-                            <br>
+
                             <c:if test="${not empty requestScope.INSERTERROR}">
                                 <c:if test="${not empty requestScope.INSERTERROR.phoneDuplicateErr}">
                                     <font color="red">
-                                    ${requestScope.INSERTERROR.phoneDuplicateErr}<br/>
+                                    ${requestScope.INSERTERROR.phoneDuplicateErr}
+                                    </font>
+                                </c:if>
+                                <c:if test="${not empty requestScope.INSERTERROR.phoneLengthErr}">
+                                    <font color="red">
+                                    ${requestScope.INSERTERROR.phoneLengthErr}<br/>
                                     </font>
                                 </c:if>
                             </c:if>
+
+
                             <label for="role">
                                 <input type="radio" name="roleid" value="1"> Customer
                                 <input type="radio" name="roleid" value="2"> Staff
-                                <input type="radio" name="roleid" value="3"> Store<br>
+                                <input type="radio" name="roleid" value="3"> Store
                             </label>
-
-                            <label style="color: red">${ERROR}</label><br>
                             <br>
                             <input class="btn-register" type="submit" value="Register"  name="btAction"/><br>
 

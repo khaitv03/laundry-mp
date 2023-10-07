@@ -25,6 +25,7 @@ public class RegisterController extends HttpServlet {
 
     private final String CREATENEWACCOUNT = "register.jsp";
     private final String LOGINPAGE = "homepage.html";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
@@ -40,7 +41,7 @@ public class RegisterController extends HttpServlet {
                 String confirmPassword = request.getParameter("cfpassword");
                 String phone = request.getParameter("phone");
                 String roleid = request.getParameter("role_id");
-                
+
                 if (!bErrors) {
                     try {
                         if (UserService.checkExistUsername(username)) {
@@ -51,16 +52,23 @@ public class RegisterController extends HttpServlet {
                         e.printStackTrace();
                     }
                 }
-                if(password.trim().length()<6 || username.trim().length() >24){
+                if (password.trim().length() < 6 || username.trim().length() > 24) {
                     err.setPasswordLengthErr("Password must be > 6 &&& < 24 chars!!!");
                     bErrors = true;
                 }
-                if(!confirmPassword.trim().equals(password)){
+                if (!confirmPassword.trim().equals(password)) {
                     err.setConfirmNotMatch("Not match!!!");
                     bErrors = true;
                 }
-                if(fullName.trim().length()<6 || fullName.trim().length() >30){
+                if (fullName.trim().length() < 6 || fullName.trim().length() > 30) {
                     err.setFullNameLengthErr("Full name must be > 2 &&& < 30 chars!!!");
+                    bErrors = true;
+                }
+                if (phone.matches("[0-9]{10,13}")) {
+                    // Đúng, chuỗi chỉ chứa số và có độ dài hợp lệ
+                } else {
+                    // Sai, chuỗi chứa ký tự đặc biệt hoặc chữ cái hoặc có độ dài không hợp lệ
+                    err.setPhoneLengthErr("Invalid phone number!");
                     bErrors = true;
                 }
                 if (!bErrors) {
