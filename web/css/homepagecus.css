@@ -8,6 +8,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 body{
     background-color: #fff;
+    margin: 0px;
+    font-family: Calibri;
 }
 .header{
     border-radius:  5px;
@@ -20,6 +22,9 @@ body{
 }
 .logo{
     width: 150px;
+    border: 1.5px black solid;
+    border-radius: 30px;
+    margin-top: 2px;
 }
 .menu{
     width: 35%;
@@ -56,16 +61,156 @@ body{
     text-align: center;
 }
 .banner img{
-    width: 100%;
+    width: 85%;
     border-radius: 3px;
 }
 main{
     margin-left: 70px;
     margin-right: 70px;
 }
-.store{
-    display: flex;
+.search{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
+.search-text{
+    width: 40%;
+    height: 40px;
+    font-size: 15px;
+    border: 2px black solid;
+    border-radius: 10px;
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+}
+.search-btn{
+    width: 100px;
+    height: 35px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.store ul{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    justify-content: space-between;
+    padding-left: 0px;
+}
+ul{
+    list-style: none;
+}
+.store{
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.store ul{
+    margin-bottom: 50px;
+}
+.store li{
+    width: 20%;
+    text-align: left;
+}
+.store .store-name{
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 30px;
+    padding-left: 5px;
+}
+.store p{
+    width: 100%;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 20px;
+    padding-left: 5px;
+}
+.store-img{
+    width: 100%;
+    border: solid black 1px;
+    border-radius: 25px;
+}
+h2{
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 40px;
+    text-align: center;
+}
+.banner2 ul{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    justify-content: space-around;
+    padding: 0px 100px;
+}
+.banner2-img{
+    width: 250px;
+    height: 250px;
+    border: 2px black solid;
+}
+.banner2 h3{
+    font-weight: bold;
+    color: black;
+    background-color: aqua;
+    padding: 5px 5px;
+    margin-right: 40%;
+    margin-left: 40%;
+}
+.banner2 p{
+    font-weight: bold;
+    font-size: 18px;
+}
+.footer{
+    background-color: grey;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 200px;
+    margin-top: 100px;
+}
+.footer h3{
+    margin: 0px;
+}
+.infor{
+    justify-content: center;
+    padding-top: 30px;
+}
+.infor h3{
+    margin: 7px 0px;
+}
+.footer-logo{
+    margin-right: 20px;
+    text-align: center;
+}
+.logo{
+    border: 1.5px black solid;
+    border-radius: 30px;
+}
+.footer-logo p{
+    margin: 0px;
+}
+.infor2{
+    margin-right: 40px;
+    justify-content: center;
+    padding-top: 50px;
+}
+.infor2 h3{
+    margin: 7px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 a{
     text-decoration: none;
 }
