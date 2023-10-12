@@ -10,10 +10,10 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -37,8 +37,8 @@ public class DeleteAccController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String pk = request.getParameter("txtStaffID");
-            String searchValue = request.getParameter("txtSearchStaff");
-            //String searchValue = "";
+            //String searchValue = request.getParameter("txtSearchStaff");
+            String searchValue ="";
             try {
                 StaffService staffSer = new StaffService();
                 boolean result = staffSer.deleteStaff(pk);

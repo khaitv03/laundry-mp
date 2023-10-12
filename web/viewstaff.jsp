@@ -14,6 +14,7 @@
         <title>JSP Page</title>
         <!-- Add Bootstrap CSS link here -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     </head>
     <body>
 
@@ -53,9 +54,9 @@
                         <th scope="col">Email</th>
                         <th scope="col">Status</th>
                         <th scope="col"></th>
-                       
 
-                      
+
+
                     </tr>
                 </thead>
                 <tbody>
@@ -80,15 +81,15 @@
                         <td>
                             <form action="MainController" method="post">
                                 <input type="hidden" name="staffID" value="<%= staff.getstaffID()%>">
-                                <button type="submit" value="DeleteStaff" name="btAction" class="btn btn-danger">Delete</button>
+                                <button type="submit" value="DeleteStaff" name="btAction" class="btn btn-danger" 
+                                        onclick="return confirm('Bạn chắc chắn muốn xóa nhân viên này?');">Delete</button>
                             </form>
                         </td>
                     </tr>
                 </form>
-                    
-                    <%
-                        }
-                    %>
+                <%
+                    }
+                %>
                 </tbody>
             </table>
             <%
