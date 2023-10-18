@@ -3,6 +3,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
+    Created on : Oct 12, 2023, 5:13:19 PM
+    Author     : nguye
+*/
+
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
     Created on : Oct 12, 2023, 12:08:25 AM
     Author     : nguye
 */
@@ -104,7 +113,7 @@ h1 {
     border-radius: 15px;
     padding-left: 15px;
     border: 1px solid #2b2684;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     position: relative;
 }
 
@@ -142,20 +151,15 @@ label a {
 .centered-link {
     display: block;
     text-align: center;
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
 }
 
 .error-label {
-    color: red;      
-    font-size: 1rem;  
+    color: red;
+    font-size: 1rem;
     font-family: Roboto, sans-serif;
 }
 
-
-
-#password {
-    margin-bottom: 10px;
-}
 
 #login-btn {
     margin: 20px 0;
@@ -238,6 +242,10 @@ span {
     margin: 0 11px 0;
 }
 
-button:hover, #login-btn:hover {
-    transform: scale(1.1);
+.radio-options input[type="radio"],
+.radio-options label {
+    display: inline;
+    margin-right: 10px;
 }
+
+

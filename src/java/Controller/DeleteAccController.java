@@ -4,24 +4,23 @@
  */
 package Controller;
 
-
+import Service.StaffService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author acer
+ * @author khait
  */
-@WebServlet(name = "LogoutConntroller", urlPatterns = {"/LogoutConntroller"})
-public class LogoutConntroller extends HttpServlet {
-    private static final String SUCCESS = "login.jsp";
-    private static final String ERROR = "login.jsp";
+public class DeleteAccController extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -31,19 +30,28 @@ public class LogoutConntroller extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    String url ="";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-        try {
-            HttpSession session = request.getSession(false);
-            if (session != null) {
-                session.invalidate();
-                url = SUCCESS;
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            String pk = request.getParameter("txtStaffID");
+            //String searchValue = request.getParameter("txtSearchStaff");
+            String searchValue = "";
+            try {
+                StaffService staffSer = new StaffService();
+                boolean result = staffSer.deleteStaff(pk);
+                
+                if(result) {
+                    url = "MainController?btAction=ViewStaff&txtSearchStaff="+ searchValue;
+                } 
+                response.sendRedirect(url);
+            } catch (SQLException e){
+                e.printStackTrace();
+            } finally {
+                out.close();
             }
-        } catch (Exception e) {
-        } finally {
-            response.sendRedirect(url);
         }
     }
 
@@ -59,7 +67,11 @@ public class LogoutConntroller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeleteAccController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -73,7 +85,11 @@ public class LogoutConntroller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeleteAccController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

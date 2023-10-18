@@ -4,13 +4,8 @@
  */
 package Controller;
 
-import Model.Order;
-import Model.User;
-import Service.UserService;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,50 +16,39 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author nguye
+ * @author acer
  */
-@WebServlet(name = "ViewHistoryController", urlPatterns = {"/ViewHistoryController"})
-public class ViewHistoryController extends HttpServlet {
+@WebServlet(name = "ValidateOtpController", urlPatterns = {"/ValidateOtpController"})
+public class ValidateOtpController extends HttpServlet {
 
-    List<Order> listOrder = new ArrayList<>();
-
-    private final String SHOWSEARCHCONTROLLER = "viewhistory.jsp";
+    private static final long serialVersionUID = 1L;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        int value = Integer.parseInt(request.getParameter("otp"));
+        HttpSession session = request.getSession();
+        int otp = (int) session.getAttribute("otp");
 
-        try (PrintWriter out = response.getWriter()) {
-            String url = SHOWSEARCHCONTROLLER;
-            String searchValue = request.getParameter("txtSearchOrder");
-            HttpSession session = request.getSession();
-            User user = (User) request.getSession().getAttribute("user");
-            int userId = user.getUserId();
-            int roleId = user.getRoleId();
-            UserService ord = new UserService();
+        RequestDispatcher dispatcher = null;
 
-            try {
-                if (!searchValue.isEmpty()) {
-                    // Nếu có giá trị tìm kiếm, thực hiện tìm kiếm theo OrderID
-                    ord.searchOrderByCustomerStoreStaff(searchValue, userId, roleId);
-                } else {
-                    // Nếu không có giá trị tìm kiếm, thực hiện truy vấn để lấy tất cả đơn đặt hàng
-                    ord.getAllOrders(userId, roleId);
-                }
+        if (value == otp) {
 
-                List<Order> result = ord.getListOrder();
-                request.setAttribute("SEARCHRESULT", result); // Sử dụng tên thuộc tính ORDER_RESULT
+            request.setAttribute("email", request.getParameter("email"));
+            request.setAttribute("status", "success");
+            dispatcher = request.getRequestDispatcher("newPassword.jsp");
+            dispatcher.forward(request, response);
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                RequestDispatcher rd = request.getRequestDispatcher(url);
-                rd.forward(request, response);
-            }
+        } else {
+            request.setAttribute("message", "wrong otp");
+
+            dispatcher = request.getRequestDispatcher("EnterOtp.jsp");
+            dispatcher.forward(request, response);
+
         }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

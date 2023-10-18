@@ -1,0 +1,85 @@
+/* Tổng quảng bá */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+/* Khung store-details */
+.store-details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.store-details img {
+    width: 100%;
+    height: auto;
+}
+
+.store-details p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.rating {
+    margin-top: 10px;
+}
+
+/* Khung customer-details */
+.customer-details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.customer-details h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.customer-details label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.customer-details input[type="text"],
+.customer-details input[type="tel"],
+.customer-details input[type="number"],
+.customer-details select,
+.customer-details textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.customer-details button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.customer-details button:hover {
+    background-color: #0056b3;
+}
+
+/* Phần tổng thanh toán */
+#totalAmount {
+    font-weight: bold;
+    font-size: 20px;
+}
+.store-details img {
+    max-width: 100%;
+    height: auto;
+}

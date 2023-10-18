@@ -6,14 +6,13 @@ package Controller;
 
 import Model.Order;
 import Model.User;
-import Service.UserService;
+import Service.OrderService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,36 +20,31 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author nguye
+ * @author khait
  */
-@WebServlet(name = "ViewHistoryController", urlPatterns = {"/ViewHistoryController"})
-public class ViewHistoryController extends HttpServlet {
+public class ViewNewOrder_Store extends HttpServlet {
 
-    List<Order> listOrder = new ArrayList<>();
 
-    private final String SHOWSEARCHCONTROLLER = "viewhistory.jsp";
 
+    private final String VIEWNEWORDER_STORE = "viewneworder_store.jsp";
+    //List<Order> listOrder = new ArrayList<>();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        try (PrintWriter out = response.getWriter()) {
-            String url = SHOWSEARCHCONTROLLER;
-            String searchValue = request.getParameter("txtSearchOrder");
+        try (PrintWriter out = response.getWriter()) {            
+            
+            String url = VIEWNEWORDER_STORE;
+            String searchValue = request.getParameter("ViewNewOrder");
             HttpSession session = request.getSession();
             User user = (User) request.getSession().getAttribute("user");
             int userId = user.getUserId();
-            int roleId = user.getRoleId();
-            UserService ord = new UserService();
+            //int roleId = user.getRoleId();
+            OrderService ord = new OrderService();
 
             try {
                 if (!searchValue.isEmpty()) {
-                    // Nếu có giá trị tìm kiếm, thực hiện tìm kiếm theo OrderID
-                    ord.searchOrderByCustomerStoreStaff(searchValue, userId, roleId);
-                } else {
-                    // Nếu không có giá trị tìm kiếm, thực hiện truy vấn để lấy tất cả đơn đặt hàng
-                    ord.getAllOrders(userId, roleId);
-                }
+                    ord.viewNewOrder(userId);
+                } 
 
                 List<Order> result = ord.getListOrder();
                 request.setAttribute("SEARCHRESULT", result); // Sử dụng tên thuộc tính ORDER_RESULT
@@ -64,7 +58,7 @@ public class ViewHistoryController extends HttpServlet {
         }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

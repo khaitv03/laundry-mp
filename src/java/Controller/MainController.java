@@ -24,7 +24,14 @@ public class MainController extends HttpServlet {
     private static final String REGISTERCONTROLLER = "RegisterController";
     private static final String VIEWHISORYCONTROLLER = "ViewHistoryController";
     private static final String UPDATEPROFILECONTROLLER = "UpdateProfileController";
+    private static final String VIEWSTAFFCONTROLLER = "ViewStaffController";
+    private static final String VIEWSTORECONTROLLER = "ViewStoreController";
+    private static final String VIEWCUSTOMERCONTROLLER = "ViewCustomerController";
+        private static final String VIEWNEWORDER_STORECONTROLLER = "ViewNewOrder_Store";
 
+
+    private static final String DELETEACCCONTROLLER = "DeleteAccController";
+    private static final String CATECONTROLLER = "CateController";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -38,17 +45,29 @@ public class MainController extends HttpServlet {
                 url = LOGINCONTROLLER;
             } else if (button.equals("Register")) {
                 url = REGISTERCONTROLLER;
-            } else if (button.equals("Search")) {
+            } else if (button.equals("ViewOrder")) {
                 url = VIEWHISORYCONTROLLER;
-            }else if (button.equals("Update")) {
+            } else if (button.equals("Update")) {
                 url = UPDATEPROFILECONTROLLER;
+            } else if (button.equals("ViewStaff")) {
+                url = VIEWSTAFFCONTROLLER;
+            } else if (button.equals("ViewStore")) {
+                url = VIEWSTORECONTROLLER;
+            } else if (button.equals("ViewCustomer")) {
+                url = VIEWCUSTOMERCONTROLLER;
+            } else if (button.equals("DeleteStaff")) {
+                url = DELETEACCCONTROLLER;
+            } else if (button.equals("Category")) {
+                url = CATECONTROLLER;
+            }  else if (button.equals("ViewNewOrder")) {
+                url = VIEWNEWORDER_STORECONTROLLER;
             }
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -62,6 +81,7 @@ public class MainController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -75,6 +95,7 @@ public class MainController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
+
     /**
      * Returns a short description of the servlet.
      *
