@@ -434,6 +434,7 @@ public class UserService implements Serializable {
                 ps.setString(5, roleid);
 
                 int rowsInserted = ps.executeUpdate();
+
                 if(roleid.equals("3")){
                 if (rowsInserted > 0) {
                     ResultSet generatedKeys = ps.getGeneratedKeys();
