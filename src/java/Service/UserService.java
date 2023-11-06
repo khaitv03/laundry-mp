@@ -434,6 +434,7 @@ public class UserService implements Serializable {
                 ps.setString(5, roleid);
 
                 int rowsInserted = ps.executeUpdate();
+
                 if (roleid.equals("3")) {
                     if (rowsInserted > 0) {
                         ResultSet generatedKeys = ps.getGeneratedKeys();
@@ -444,7 +445,6 @@ public class UserService implements Serializable {
                             PreparedStatement pos = con.prepareStatement(insert5star);
                             pos.setInt(1, 5);
                             pos.setInt(2, userID);
-
                             int row = pos.executeUpdate();
 
                             return row > 0;
